@@ -15,3 +15,16 @@ resource "aws_s3_bucket" "my_bucket" {
 terraform {
   backend "s3" {}
 }
+
+
+module "my_vpc" {
+  source = "modules/vpc"
+  cidr   = var.cidr
+
+
+  tags = {
+    Name        = "saivpc"
+    Environment = "Dev"
+  }
+
+}
