@@ -5,7 +5,6 @@ provider "aws" {
 
 resource "aws_s3_bucket" "my_bucket" {
   bucket = "saibucket0123456789"
-  acl    = "private"
 
   tags = {
     Name        = "saibucket0123456789"
