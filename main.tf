@@ -18,13 +18,6 @@ terraform {
 
 
 module "my_vpc" {
-  source = "modules/vpc"
+  source = "./modules/vpc"
   cidr   = var.cidr
-
-
-  tags = {
-    Name        = "saivpc"
-    Environment = "Dev"
-  }
-
 }
