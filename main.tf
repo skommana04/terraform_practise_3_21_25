@@ -14,9 +14,11 @@ resource "aws_s3_bucket" "my_bucket" {
 
 terraform {
   backend "s3" {
-    bucket = "saibucket0123456789"
-    key    = "terraform.tfstate"
-    region = "us-east-1"
+    bucket       = "saibucket0123456789"
+    key          = "terraform.tfstate"
+    region       = "us-east-1"
+    encrypt      = true
+    use_lockfile = true
   }
 }
 
