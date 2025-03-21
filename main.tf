@@ -21,3 +21,11 @@ module "my_vpc" {
   source = "./modules/vpc"
   cidr   = var.cidr
 }
+
+module "my_public_subnets" {
+  source               = "./modules/subnets"
+  vpc_id               = module.my_vpc.vpc_id
+  public_subnets_cidrs = var.public_subnets_cidrs
+  availability_zones   = var.availability_zones
+
+}
