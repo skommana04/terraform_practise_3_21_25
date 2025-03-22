@@ -33,7 +33,7 @@ module "my_public_subnets" {
 
 
 module "my_security_group" {
-  source = "./modules/security_group"
+  source = "./modules/sg"
   vpc_id = module.my_vpc.vpc_id
 }
 
