@@ -63,10 +63,10 @@ resource "aws_eip" "nat_eip" {
 resource "aws_nat_gateway" "nat_gw" {
 
   allocation_id = aws_eip.nat_eip.id
-  subnet_id     = element(aws_subnet.public_subnet[0].id, count.index)
+  subnet_id     = (aws_subnet.public_subnet[0].id)
 
   tags = {
-    Name        = "saivpc-nat-gw-${count.index}"
+    Name        = "saivpc-nat-gw"
     Environment = "Dev"
   }
 }
