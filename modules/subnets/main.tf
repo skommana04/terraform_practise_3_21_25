@@ -52,5 +52,35 @@ resource "aws_route_table_association" "public_route_table_association" {
 
 }
 
+resource "aws_eip" "nat_eip" {
+  domain = "vpc" # Recommended instead of vpc=true
+  tags = {
+    Name = "nat-eip"
+  }
+}
 
 
+resource "aws_nat_gateway" "nat_gw" {
+
+  allocation_id = aws_eip.nat_eip.id
+  subnet_id     = element(aws_subnet.public_subnet[0].id, count.index)
+
+  tags = {
+    Name        = "saivpc-nat-gw-${count.index}"
+    Environment = "Dev"
+  }
+}
+resource "aws_route_table" "private_route_table" {
+  vpc_id = var.vpc_id
+
+  route {
+    cidr_block     = "0.0.0.0/0"
+    nat_gateway_id = aws_nat_gateway.nat_gw.id
+  }
+
+  tags = {
+    Name        = "saivpc-private-route-table"
+    Environment = "Dev"
+  }
+
+}
