@@ -38,11 +38,11 @@ module "my_security_group" {
 }
 
 module "my_autoscaling_group" {
-  source             = "./modules/autoscaling"
-  ami_id             = var.ami_id
-  instance_type      = var.instance_type
-  key_name           = var.key_name
-  availability_zones = var.availability_zones
+  source        = "./modules/autoscaling"
+  ami_id        = var.ami_id
+  instance_type = var.instance_type
+  key_name      = var.key_name
+  #availability_zones = var.availability_zones
   private_subnet_ids = module.my_public_subnets.private_subnet_ids
   security_groups    = [module.my_security_group.ec2_sg_id]
 }

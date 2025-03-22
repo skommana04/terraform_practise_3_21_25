@@ -9,8 +9,8 @@ resource "aws_launch_template" "launchtemp" {
 }
 
 resource "aws_autoscaling_group" "autoscaling" {
-  name                = "saiautoscalinggroup"
-  availability_zones  = var.availability_zones
+  name = "saiautoscalinggroup"
+  #availability_zones  = var.availability_zones
   desired_capacity    = 1
   max_size            = 1
   min_size            = 1
