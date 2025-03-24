@@ -21,11 +21,6 @@ resource "aws_lb_target_group" "my_tg" {
 
 }
 
-resource "aws_lb_target_group_attachment" "tg_attachment" {
-  target_group_arn = aws_lb_target_group.my_tg.arn
-  target_id        = var.ec2_instance_id
-  port             = 80
-}
 
 
 resource "aws_lb" "my_alb" {

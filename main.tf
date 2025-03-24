@@ -62,12 +62,12 @@ module "my_autoscaling_group" {
   target_group_arns  = module.my_alb.target_group_arns
 }
 
-module "my_ec2_instance" {
-  source          = "./modules/ec2"
-  ami_id          = var.ami_id
-  instance_type   = var.instance_type
-  key_name        = var.key_name
-  subnet_id       = element(module.my_public_subnets.private_subnet_ids, 0)
-  security_groups = [module.my_security_group.ec2_sg_id]
-}
+# module "my_ec2_instance" {
+#   source          = "./modules/ec2"
+#   ami_id          = var.ami_id
+#   instance_type   = var.instance_type
+#   key_name        = var.key_name
+#   subnet_id       = element(module.my_public_subnets.private_subnet_ids, 0)
+#   security_groups = module.my_security_group.ec2_sg_id
+# }
 
