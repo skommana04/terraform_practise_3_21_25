@@ -16,7 +16,7 @@ resource "aws_autoscaling_group" "autoscaling" {
   min_size            = 1
   vpc_zone_identifier = var.private_subnet_ids
   health_check_type   = "EC2"
-  target_group_arns   = var.target_group_arns
+  target_group_arns   = [var.target_group_arns]
 
 
   launch_template {
