@@ -59,7 +59,7 @@ module "my_autoscaling_group" {
   private_subnet_ids = module.my_public_subnets.private_subnet_ids
   security_groups    = [module.my_security_group.ec2_sg_id]
   rds_db_endpoint    = module.my_rds.rds_db_endpoint
-  target_group_arns  = module.my_alb.target_group_arns
+  target_group_arns  = module.my_alb.alb_tg_arn
 }
 
 # module "my_ec2_instance" {
