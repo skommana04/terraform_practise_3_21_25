@@ -6,10 +6,9 @@ resource "aws_launch_template" "launchtemp" {
   vpc_security_group_ids = var.security_groups
   user_data              = base64encode(templatefile(("user_data.sh"), { mysql_url = var.rds_db_endpoint }))
 
-
   tags = {
-    Name    = "sai-app"
-    Monitor = "true"
+    key   = "sai-app"
+    value = "true"
   }
 
 }
@@ -29,4 +28,6 @@ resource "aws_autoscaling_group" "autoscaling" {
     id      = aws_launch_template.launchtemp.id
     version = "$Latest"
   }
+
+
 }
