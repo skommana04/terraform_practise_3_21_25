@@ -15,6 +15,7 @@ resource "aws_db_instance" "rds_instance" {
   db_subnet_group_name   = aws_db_subnet_group.subnet_group.name
   identifier             = "petclinic"
   vpc_security_group_ids = [var.db_sg_id]
+  db_name                = "petclinic"
 
   publicly_accessible = true
   skip_final_snapshot = true
